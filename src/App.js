@@ -18,8 +18,15 @@ import GenderForm from "./components/admin/genders/genderForm";
 import Genders from "./components/admin/genders/genders";
 import ProtectedRoute from "./components/common/protectedRoute";
 import AdminRoute from "./components/common/adminRoute";
+import UserRoute from './components/common/userRoute';
+import AnalystRoute from './components/common/analystRoute';
+import ModeratorRoute from './components/common/moderatorRoute';
 import NotAuthorized from "./components/notAuthorized";
 import Search from "./components/search/search";
+import AdminDashboard from './components/admin/adminDashboard';
+import ModeratorDashboard from './components/moderator/moderatorDashboard';
+import AnalystDashboard from './components/analyst/analystDashboard';
+
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -29,7 +36,7 @@ class App extends Component {
   componentDidMount() {
     const user = auth.getCurrentUser();
     console.log("Current user info");
-    console.log(user);
+    // console.log(user);
     this.setState({ user });
   }
   render() {
@@ -51,7 +58,10 @@ class App extends Component {
             <AdminRoute path="/Admin/genders" component={Genders} />
             // <ProtectedRoute path="/search/:id" component={UserForm} />
             <ProtectedRoute path="/search" component={Search} />
-            <Route path="/User" component={UserDashboard}></Route>
+            <UserRoute path="/User/dashboard" component={UserDashboard}></UserRoute>
+            <AdminRoute path="/Admin/dashboard" component={AdminDashboard}></AdminRoute>
+            <ModeratorRoute path="/Moderator/dashboard" component={ModeratorDashboard}></ModeratorRoute>
+            <AnalystRoute path="/Analyst/dashboard" component={AnalystDashboard}></AnalystRoute>
             <Route path="/notAuthorized" component={NotAuthorized}></Route>
             <Route path="/not-found" component={NotFound}></Route>
             <Route path="/" exact component={Home}></Route>

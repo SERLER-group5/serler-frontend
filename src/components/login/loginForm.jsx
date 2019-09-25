@@ -1,12 +1,15 @@
 import React from "react";
 import Joi from "joi-browser";
+import { Redirect } from 'react-router-dom';
+
 import Form from "../common/form";
 import auth from "../../services/authService";
 
 class LoginForm extends Form {
   state = {
     data: { email: "", password: "" },
-    errors: {}
+    errors: {},
+    redirectToReferer: false
   };
 
   schema = {
@@ -19,35 +22,55 @@ class LoginForm extends Form {
       .label("Password")
   };
 
+  // componentDidMount(){
+  //   const user = auth.getCurrentUser();
+  //   console.log("Current user info");
+  //   console.log(user);
+  // }
   doSubmit = async () => {
     // Call the server
     try {
-      const {data} = this.state;
+      const { data } = this.state;
       await auth.login(data.email, data.password);
-      window.location="/user";
+      this.setState({redirectToReferer: true});
+      // if (user.role === "Admin") window.location = "/admin/dashboard";
+      // if (user.role === "Analyzer") window.location = "/analyst/dashboard";
+      // if (user.role === "Moderator") window.location = "/moderator/dashboard";
+      //window.location = "/user/dashboard";
     } catch (ex) {
-      if(ex.response && ex.response.status === 400){
-        const errors = {...this.state.errors};
-        console.log(ex.response)
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
         errors.email = ex.response.data;
-        console.log(errors.email);
-        this.setState({errors});
+        this.setState({ errors });
       }
     }
-    
   };
 
   render() {
-    return (      
+    const {redirectToReferer} = this.state;
+    if(redirectToReferer){
+      const user = auth.getCurrentUser();
+      if (user.role === "Admin") window.location = "/admin/dashboard";
+      if (user.role === "Analyzer")  window.location = "/analyst/dashboard";
+      if (user.role === "Moderator")  window.location = "/moderator/dashboard";
+      if (user.role === "User") window.location = "/User/dashboard";
+    }
+    return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit} className="form-signin" width="400">
-        <img className="mb-4" src="SerlerLogo.png" alt="" width="100" height="100"/>
-        <h1>Login</h1>
+          <img
+            className="mb-4"
+            src="SerlerLogo.png"
+            alt=""
+            width="100"
+            height="100"
+          />
+          <h1>Login</h1>
           {this.renderInput("email", "Email")}
           {this.renderInput("password", "Password", "password")}
           {this.renderButton("Login")}
         </form>
-        </React.Fragment>
+      </React.Fragment>
     );
   }
 }

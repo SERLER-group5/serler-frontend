@@ -26,28 +26,41 @@ const NavBar = ({ user }) => {
         <NavLink className="nav-link" to="/search">
           Search
         </NavLink>
-        {user && user.role === 'Analyzer' && (
-          <NavLink className="nav-link" to="/analyzer/queue">
-          Analyzer Queue
-        </NavLink>
-        )}
-        {user && user.role === 'Moderator' && (
-          <NavLink className="nav-link" to="/moderator/queue">
-          Moderator Queue
-        </NavLink>
-        )}
-        {user && user.role === 'Admin' && (
+        {user && user.role === "Analyzer" && (
           <React.Fragment>
-        <NavLink className="nav-link" to="/admin/users">
-          Users
-        </NavLink>
-        <NavLink className="nav-link" to="/admin/roles">
-          Roles
-        </NavLink>
-        <NavLink className="nav-link" to="/admin/genders">
-          Genders
-        </NavLink>
-        </React.Fragment>
+            <NavLink className="nav-link" to="/analyst/dashboard">
+              Dashboard
+            </NavLink>
+            <NavLink className="nav-link" to="/analyst/queue">
+              Analyzer Queue
+            </NavLink>
+          </React.Fragment>
+        )}
+        {user && user.role === "Moderator" && (
+          <React.Fragment>
+            <NavLink className="nav-link" to="/moderator/dashboard">
+              Dashboard
+            </NavLink>
+            <NavLink className="nav-link" to="/moderator/queue">
+              Moderator Queue
+            </NavLink>
+          </React.Fragment>
+        )}
+        {user && user.role === "Admin" && (
+          <React.Fragment>
+            <NavLink className="nav-link" to="/admin/dashboard">
+              Dashboard
+            </NavLink>
+            <NavLink className="nav-link" to="/admin/users">
+              Users
+            </NavLink>
+            <NavLink className="nav-link" to="/admin/roles">
+              Roles
+            </NavLink>
+            <NavLink className="nav-link" to="/admin/genders">
+              Genders
+            </NavLink>
+          </React.Fragment>
         )}
 
         {!user && (
@@ -63,6 +76,9 @@ const NavBar = ({ user }) => {
 
         {user && (
           <React.Fragment>
+            <NavLink className="nav-link" to="/user/dashboard">
+              Dashboard
+            </NavLink>
             <NavLink className="nav-link" to="/me">
               {user.name}
             </NavLink>
