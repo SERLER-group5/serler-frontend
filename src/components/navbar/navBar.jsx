@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
+
 const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,10 +23,14 @@ const NavBar = ({ user }) => {
         <NavLink className="nav-link" to="/">
           Home <span className="sr-only">(current)</span>
         </NavLink>
-
         <NavLink className="nav-link" to="/search">
           Search
         </NavLink>
+        <NavLink className="nav-link" to="/paper">
+          Add Paper
+        </NavLink>
+
+
         {user && user.role === "Analyzer" && (
           <React.Fragment>
             <NavLink className="nav-link" to="/analyst/dashboard">
@@ -67,7 +72,8 @@ const NavBar = ({ user }) => {
             <NavLink className="nav-link" to="/user/dashboard">
               Dashboard
             </NavLink>
-            
+
+
           </React.Fragment>
         )}
 
@@ -84,7 +90,7 @@ const NavBar = ({ user }) => {
 
         {user && (
           <React.Fragment>
-            
+
             <NavLink className="nav-link" to="/me">
               {user.name}
             </NavLink>

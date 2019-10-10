@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, Link } from "react-router-dom";
 import Home from "./components/home";
 import NotFound from "./components/notfound";
 import NavBar from "./components/navbar/navBar";
@@ -26,6 +26,9 @@ import Search from "./components/search/search";
 import AdminDashboard from './components/admin/adminDashboard';
 import ModeratorDashboard from './components/moderator/moderatorDashboard';
 import AnalystDashboard from './components/analyst/analystDashboard';
+import AddPaper from './components/paper/addpaper';
+import AddManual from './components/paper/addmanual';
+import AddBibtex from './components/paper/addbibtex';
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -50,6 +53,9 @@ class App extends Component {
             <Route path="/login" component={LoginForm}></Route>
             <Route path="/logout" component={Logout}></Route>
             <Route path="/register" component={RegisterForm}></Route>
+            <Route path="/paper" component={AddPaper}></Route>
+            <Route path="/addmanual" component={AddManual}></Route>
+            <Route path="/addbibtex" component={AddBibtex}></Route>
             <AdminRoute path="/Admin/users/:id" component={UserForm}   />
             <AdminRoute path="/Admin/users" component={Users}  />
             <AdminRoute path="/Admin/roles/:id" component={RoleForm} />
@@ -65,6 +71,7 @@ class App extends Component {
             <Route path="/notAuthorized" component={NotAuthorized}></Route>
             <Route path="/not-found" component={NotFound}></Route>
             <Route path="/" exact component={Home}></Route>
+            
             <Redirect to="/not-found" />
           </Switch>
         </main>
