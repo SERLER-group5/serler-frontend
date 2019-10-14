@@ -17,6 +17,9 @@ import RoleForm from "./components/admin/roles/roleForm";
 import GenderForm from "./components/admin/genders/genderForm";
 import Genders from "./components/admin/genders/genders";
 import Status from "./components/admin/status/status";
+import Article from "./components/admin/articles/articles";
+import ArticleForm from "./components/admin/articles/articleForm";
+import ArticleAddForm from "./components/admin/articles/articleAddForm";
 import ProtectedRoute from "./components/common/protectedRoute";
 import AdminRoute from "./components/common/adminRoute";
 import UserRoute from './components/common/userRoute';
@@ -58,6 +61,9 @@ class App extends Component {
             <AdminRoute path="/Admin/genders/:id" component={GenderForm} />
             <AdminRoute path="/Admin/genders" component={Genders} />
             <AdminRoute path="/Admin/status" component={Status} />
+            <AdminRoute path="/Admin/article/publish" component={ArticleAddForm} />
+            <AdminRoute path="/Admin/article/:id" component={ArticleForm} />
+            <AdminRoute path="/Admin/article" component={Article} />
             // <ProtectedRoute path="/search/:id" component={UserForm} />
             <ProtectedRoute path="/search" component={Search} />
             <UserRoute path="/User/dashboard" component={UserDashboard}></UserRoute>
