@@ -60,6 +60,12 @@ const NavBar = ({ user }) => {
             <NavLink className="nav-link" to="/admin/genders">
               Genders
             </NavLink>
+            <NavLink className="nav-link" to="/admin/status">
+              Status 
+            </NavLink>
+            <NavLink className="nav-link" to="/admin/article">
+              Article
+            </NavLink>
           </React.Fragment>
         )}
         {user && user.role === "User" && (
