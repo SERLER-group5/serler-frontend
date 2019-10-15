@@ -43,6 +43,8 @@ class Status extends Component {
                 toast.error("Access Denied");
             if (ex.response && ex.response.status === 400) 
                 toast.error("Bad Request");
+            if (ex.response && ex.response.status === 400) 
+                toast.error("Bad Request");
             this.setState({ statuses: originalStatues });
         }
     };
@@ -94,8 +96,7 @@ class Status extends Component {
         const { length: statusesCount } = this.state.statuses;
         const { pageSize, currentPage, sortColumn } = this.state;
 
-        if (statusesCount === 0) return <p>There are no status in the database</p>;
-
+        //if (statusesCount === 0) return <p>There are no status in the database</p>;
         const { totalCount, data } = this.getPagedData();
 
         return (
