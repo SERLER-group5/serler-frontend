@@ -45,7 +45,7 @@ class ArticleAddForm extends Component {
                 this.props.history.push("/admin/article");
             }, 4000);
         }).catch((error) => {
-            toast.error('Delete error!', 3000, 'fa-times');
+            toast.error('saved error!', 3000, 'fa-times');
             console.log(error);
         });
     }

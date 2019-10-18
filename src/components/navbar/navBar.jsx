@@ -60,7 +60,6 @@ const NavBar = ({ user }) => {
             <NavLink className="nav-link" to="/admin/genders">
               Genders
             </NavLink>
-
             <NavLink className="nav-link" to="/admin/status">
               Status 
             </NavLink>

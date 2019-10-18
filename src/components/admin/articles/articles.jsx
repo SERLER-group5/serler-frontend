@@ -78,7 +78,7 @@ class Article extends Component {
         const { length: articlesCount } = this.state.articles;
         const { pageSize, currentPage, sortColumn } = this.state;
 
-        if (articlesCount === 0) return <p>There are no article in the database</p>;
+        //if (articlesCount === 0) return <p>There are no article in the database</p>;
 
         const { totalCount, data } = this.getPagedData();
 

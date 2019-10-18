@@ -15,13 +15,8 @@ export function getArticle(id){
     return http.get(articleUrl(id));
 }
 
-<<<<<<< HEAD
 export function conditionQuery(condition) {
     return http.post(apiEndpoint + "/condition/query", condition);
-=======
-export function fuzzyQueryByTitle(title) {
-    return http.get(apiEndpoint + "/title/" + title);
->>>>>>> 0b7c9a45cf6c63258815c84d6f4e1da0188b351b
 }
 
 export function saveArticle(article){
